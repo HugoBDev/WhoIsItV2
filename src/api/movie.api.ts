@@ -24,14 +24,16 @@ export class MovieAPI {
 
   /**
    * 
-   * @param id Ici on donne l'id du film pour lequel on veut les détails    
+   * @param id Ici on donne l'id du film pour lequel on veut les détails  
+   * @param credits = false Ici on choisit si 'lon veut avoir les crédits du film ou non   
    * @param language 
    * @returns une Promise de type <any>
    */
-  getMovieDetails(id: number, language: string = "fr"): Promise<any> {
+  getMovieDetails(id: number, credits : boolean = false, language: string = "fr"): Promise<any> {
     const queryParams: any = {
       language: language,
       api_key: environnement.API_KEY,
+      append_to_response : credits? "credits" : ""
     };
     const url = `${environnement.api.movieDetails}${id}?${new URLSearchParams(
       queryParams

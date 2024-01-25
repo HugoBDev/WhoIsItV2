@@ -5,7 +5,7 @@ const movieApi = new MovieAPI();
 
 
 function App() {
-  movieApi.getMovieDetails(13, "es")
+  movieApi.getMovieDetails(13)
   .then((data)=> console.log(data)
   )
   
