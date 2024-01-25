@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 
 
-environnement.ts
+# env/
