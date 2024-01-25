@@ -1,0 +1,63 @@
+@import "../../../global.scss";
+$max-width: 300px;
+
+.movie-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+ 
+  font-family: "Exo 2", sans-serif;
+  filter: drop-shadow(0 0 2rem #4d034d);
+  border-radius: 1rem;
+  overflow: hidden;
+  max-width: $max-width;
+  height: 28rem;
+}
+.moviecard-title {
+  font-size: 2rem;
+  font-weight: 900;
+  z-index: 1;
+  text-align: left;
+  color: $light;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-transform: uppercase;
+}
+
+.moviecard-moreinfos {
+    color: $light-050;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+}
+.movie-genres-container {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    z-index: 1;
+}
+
+.bottom-gradient {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(transparent, black);
+  padding: 0.5rem 0.5rem 1rem 0.5rem;
+  height: auto;
+  gap: 0.5rem;
+}
+
+#img-container {
+  width: $max-width;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+img {
+  width: 100%;
+  object-fit: cover;
+}
