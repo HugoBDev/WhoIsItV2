@@ -1,0 +1,11 @@
+@import "../../../global.scss";
+
+.movies-cards-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    background: black;
+    justify-content: center;
+    margin: 4rem;
+    
+}

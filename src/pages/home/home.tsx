@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import MovieCardComponent from "../components/movieCard/movieCard";
-import { MovieCardModel } from "../models/movieCard.model";
-import { MovieAPI } from "../api/movie.api";
-
+import MovieCardComponent from "../../components/movieCard/movieCard";
+import { MovieCardModel } from "../../models/movieCard.model";
+import { MovieAPI } from "../../api/movie.api";
+import "./home.scss"
 const movieApi = new MovieAPI();
 
 function Home() {
@@ -22,7 +22,7 @@ function Home() {
   }, []);
 
   return (
-    <div>
+    <div className="movies-cards-wrapper">
       {movieList.map((moviemap, index) => (
         <MovieCardComponent key={index} movie={moviemap} />
       ))}

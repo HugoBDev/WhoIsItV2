@@ -1,4 +1,9 @@
 $primary : #c035f1 ;
 $primary-light : #f7a0f7 ;
 $light : #ebeaea;
-$light-050 : #838383
+$light-050 : #838383;
+
+body{
+    background: black;
+    color: $light-050;
+}

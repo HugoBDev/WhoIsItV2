@@ -1,0 +1,21 @@
+@import "../../../global.scss";
+
+$max-width: 300px;
+
+.img-container {
+    width: $max-width;
+    overflow: hidden;
+    z-index: -1;
+  }
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+  .back-btn{
+    padding: 0.5rem 1rem;
+    border-radius: 99999px;
+    background-color: $primary ;
+    color: $light;
+    text-align: center;
+    width: min-content;
+  }

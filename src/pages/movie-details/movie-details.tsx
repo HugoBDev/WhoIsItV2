@@ -1,7 +1,10 @@
 import { useParams } from "react-router-dom";
-import { MovieAPI } from "../api/movie.api";
+import { MovieAPI } from "../../api/movie.api";
 import { useEffect, useState } from "react";
-import { MovieDetailsModel } from "../models/movieDetails.model";
+import { MovieDetailsModel } from "../../models/movieDetails.model";
+import { Link } from "react-router-dom";
+
+import "./movie-details.scss"
 
 function MovieDetails() {
     const  {id}   = useParams();
@@ -34,8 +37,8 @@ function MovieDetails() {
                 <div className="realease-date">{movieDetail?.release_date}</div>
                 <div className="overview">{movieDetail?.overview}</div>
             </div>
+            <Link className="back-btn" to="/home">RETOUR</Link>
         </>
     )
-    
     }
     export default MovieDetails
