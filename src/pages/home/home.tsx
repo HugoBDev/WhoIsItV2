@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+
 import { useEffect, useState } from "react";
 import MovieCardComponent from "../../components/movieCard/movieCard";
 import { MovieCardModel } from "../../models/movieCard.model";
