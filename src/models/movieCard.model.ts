@@ -1,5 +1,5 @@
 export interface MovieCardModel {
-    id? : number
+    id : number
     title : string,
     genres? : string[],
     poster_path : string
