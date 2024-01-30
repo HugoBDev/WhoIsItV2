@@ -10,6 +10,11 @@ function Home() {
   //? ici le state doit etre une liste de MovieCardModel sous forme de tableau(sinon on peut pas map dedans), de base ce tableau est vide//
   const [movieList, setMovieList] = useState<MovieCardModel[]>([]);
 
+movieApi.getGenres()
+.then((data) => console.log(data)
+
+
+)
   useEffect(() => {
     movieApi.getTopRatedMovie().then((data) => {
       const topRatedMovies: MovieCardModel[] = data.results.map((el: any) => ({

@@ -23,21 +23,45 @@ export class MovieAPI {
   }
 
   /**
-   * 
-   * @param id Ici on donne l'id du film pour lequel on veut les détails  
-   * @param credits = false Ici on choisit si 'lon veut avoir les crédits du film ou non   
-   * @param language 
+   *
+   * @param id Ici on donne l'id du film pour lequel on veut les détails
+   * @param credits = false Ici on choisit si 'lon veut avoir les crédits du film ou non
+   * @param language
    * @returns une Promise de type <any>
    */
-  getMovieDetails(id: number, credits : boolean = false, language: string = "fr"): Promise<any> {
+  getMovieDetails(
+    id: number,
+    credits: boolean = false,
+    language: string = "fr"
+  ): Promise<any> {
     const queryParams: any = {
       language: language,
       api_key: environnement.API_KEY,
-      append_to_response : credits? "credits" : ""
+      append_to_response: credits ? "credits" : "",
     };
     const url = `${environnement.api.movieDetails}${id}?${new URLSearchParams(
       queryParams
-    ).toString()}`;
+    )}`;
+    return new Promise((resolve, reject) => {
+      fetch(url)
+        .then((res) => res.json())
+        .then((data) => resolve(data))
+        .catch((error) => reject(error));
+    });
+  }
+
+  /**
+   * 
+   * @param category = ici sous forme de string on choisit "movie" ou "tv" pour les TV SHOWS
+   * @param language 
+   * @returns 
+   */
+  getGenres(category: "movie" | "tv" = "movie", language: string = "fr"): Promise<any> {
+    const queryParams: any = {
+      language: language,
+      api_key: environnement.API_KEY
+    };
+    const url = `${environnement.api.genresData}${category}/list?${new URLSearchParams(queryParams)}`;
     return new Promise((resolve, reject) => {
       fetch(url)
         .then((res) => res.json())
