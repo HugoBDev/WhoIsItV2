@@ -32,6 +32,7 @@ function Home() {
       }));
       setMovieList(topRatedMovies);
       
+      
     });
   }, []);
 

@@ -5,10 +5,10 @@ import "./chip.scss"
 
 
 
-function Chip ({ title }: { title: string }) {
+function Chip ({ genre }: { genre: string }) {
   return (
     <div>
-      <div className="chip">{title}</div>
+      <div className="chip">{genre}</div>
     </div>
   );
 };
