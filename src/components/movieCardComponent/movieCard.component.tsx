@@ -1,6 +1,6 @@
 import "./movieCard.scss";
-import Chip from "../chip/Chip.tsx";
-import { MovieCardModel } from "../../models/movieCard.model";
+import Chip from "../chipComponent/Chip.tsx";
+import { MovieCardModel } from "../../models/movieCard.model.ts";
 import { Link } from "react-router-dom";
 
 const MovieCardComponent = ({ movie }: { movie: MovieCardModel }) => {

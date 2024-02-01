@@ -1,0 +1,63 @@
+@import "../../../global.scss";
+
+$max-width: 300px;
+$dropShadowColor : $primary-light;
+
+
+
+.crew-wrapper{
+display: flex;
+gap: 2rem;
+flex-wrap: wrap;
+}
+.person-card {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    justify-content: flex-end;
+    filter: drop-shadow(0 0 0 $dropShadowColor);
+    font-family: "Exo 2", sans-serif;
+    border-radius: 1rem;
+    overflow: hidden;
+    width: $max-width;
+    height: 28rem;
+    transition: filter 300ms ease-in-out;
+  &:hover{
+    filter: drop-shadow(0 0 1rem $dropShadowColor);
+  }
+  }
+  .personcard-character {
+    font-size: 1rem;
+    font-weight: 700;
+    z-index: 1;
+    text-align: left;
+    color: $light;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-transform: uppercase;
+  }
+  .personcard-name {
+    font-size: 2rem;
+    font-weight: 900;
+    z-index: 1;
+    text-align: left;
+    color: $light;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-transform: uppercase;
+  }
+  .person-bottom-gradient {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(transparent, black);
+    padding: 0.5rem 0.5rem 1rem 0.5rem;
+    height: auto;
+    gap: 0.5rem;
+  }

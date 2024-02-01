@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import MovieCardComponent from "../../components/movieCard/movieCard";
+import MovieCardComponent from "../../components/movieCardComponent/movieCard.component";
 import { MovieCardModel } from "../../models/movieCard.model";
 import { MovieAPI } from "../../api/movie.api";
 import "./home.scss";

@@ -1,0 +1,28 @@
+@import "../../../global.scss";
+
+
+#layout-page {
+    padding: 1rem 6rem;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 2rem;
+   h1{
+    font-weight: 900;
+    font-size: 3rem;
+    color: $light;
+    font-family:"Exo 2", sans-serif; 
+    padding: 0;
+    margin: 0;
+   }
+  .search-movie {
+    padding: 1rem 1.5rem;
+    border: 0.2rem solid $primary-light;
+    outline: none;
+    border-radius: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 24rem;
+    font-size: 1.5rem;
+
+  }
+}

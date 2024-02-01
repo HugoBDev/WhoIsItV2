@@ -5,17 +5,19 @@ import { MovieDetailsModel } from "../../models/movieDetails.model";
 import { Link } from "react-router-dom";
 
 import "./movie-details.scss"
+import PersonCard from "../../components/personCardComponent/personCard.component";
+import { PersonModel } from "../../models/person.model";
 
 function MovieDetails() {
     const  {id}   = useParams();
     const movieApi =  new MovieAPI();
     const [movieDetail, setMovieDetail] = useState<MovieDetailsModel>()
+    const [personsDetail, setPersonsDetail] = useState<PersonModel[]>([])
 
     useEffect(() =>{
         //ParseInt = transforme un string en number et le "!" dit que ce ne sera pas undefined//
         movieApi.getMovieDetails(parseInt(id!),true)
         .then((data)=>{
-            console.log(data);
             const currMovieDetails : MovieDetailsModel = {
             title : data.title,
             release_date: data.release_date,
@@ -24,8 +26,17 @@ function MovieDetails() {
             overview : data.overview,  
             cast : data.credits.cast  
             }
+
+            const currCrew : PersonModel[] = data.credits.cast.slice(0,5).map((actor : any) => ({
+                personId : actor.id,
+                name : actor.name,
+                movieCharacter : actor.character,
+                department : actor.known_for_department,
+                profile_path : `https://image.tmdb.org/t/p/original/${actor.profile_path}`   
+            }))
             setMovieDetail(currMovieDetails)
-        })
+            setPersonsDetail(currCrew)
+        })       
     }, []);
     return(
         <>
@@ -36,16 +47,14 @@ function MovieDetails() {
                 <div className="title">{movieDetail?.title}</div>
                 <div className="realease-date">{movieDetail?.release_date}</div>
                 <div className="overview">{movieDetail?.overview}</div>
-                <div>{movieDetail?.director}</div>
-                <div className="actors-img">
-                <img src={`https://image.tmdb.org/t/p/original/${movieDetail?.cast[0].profile_path}`} alt="actor-poster" />
-                <div>{movieDetail?.cast[0].name}</div>
-                </div>
-                <div>{movieDetail?.cast[1].name}</div>
-                <div>{movieDetail?.cast[2].name}</div>
-                <div>{movieDetail?.cast[3].name}</div>
-                <div>{movieDetail?.cast[4].name}</div>
+                
             </div>
+            <div className="crew-wrapper">
+            {personsDetail.map((person, index) => (
+                <PersonCard key={index} person={person} />
+            ))}
+        </div>
+
             <Link className="back-btn" to="/home">RETOUR</Link>
         </>
     )
