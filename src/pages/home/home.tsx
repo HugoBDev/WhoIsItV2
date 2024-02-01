@@ -12,7 +12,10 @@ function Home() {
   const [movieList, setMovieList] = useState<MovieCardModel[]>([]);
 
  
+  movieApi.getSearchResults("spider man")
+  .then((data) => console.log(data)
   
+  )
   
   
   useEffect(() => {
