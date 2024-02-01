@@ -3,7 +3,7 @@ import MovieCardComponent from "../../components/movieCard/movieCard";
 import { MovieCardModel } from "../../models/movieCard.model";
 import { MovieAPI } from "../../api/movie.api";
 import "./home.scss";
-import getGenresById from "../../services/getMovieGenre.service";
+import getGenresById from "../../services/genre.service";
 
 const movieApi = new MovieAPI();
 

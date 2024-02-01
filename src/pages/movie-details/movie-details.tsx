@@ -20,13 +20,13 @@ function MovieDetails() {
             title : data.title,
             release_date: data.release_date,
             poster_path : `https://image.tmdb.org/t/p/original/${data.poster_path}`,
-            overview : data.overview
+            director : data.credits.crew.find((e : any) => e.known_for_department === "Directing" && e.department === "Directing").name,
+            overview : data.overview,  
+            cast : data.credits.cast  
             }
             setMovieDetail(currMovieDetails)
         })
     }, []);
-    
-
     return(
         <>
             <div className="img-container">
@@ -36,6 +36,15 @@ function MovieDetails() {
                 <div className="title">{movieDetail?.title}</div>
                 <div className="realease-date">{movieDetail?.release_date}</div>
                 <div className="overview">{movieDetail?.overview}</div>
+                <div>{movieDetail?.director}</div>
+                <div className="actors-img">
+                <img src={`https://image.tmdb.org/t/p/original/${movieDetail?.cast[0].profile_path}`} alt="actor-poster" />
+                <div>{movieDetail?.cast[0].name}</div>
+                </div>
+                <div>{movieDetail?.cast[1].name}</div>
+                <div>{movieDetail?.cast[2].name}</div>
+                <div>{movieDetail?.cast[3].name}</div>
+                <div>{movieDetail?.cast[4].name}</div>
             </div>
             <Link className="back-btn" to="/home">RETOUR</Link>
         </>

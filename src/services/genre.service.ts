@@ -1,10 +1,8 @@
-import { MovieAPI } from "../api/movie.api";
-
-const movieGenres = new MovieAPI();
 /**
  * Cette fonction prend en paramètres un tableau d'id (ceux des genres TMDB)
  * et retourne un tableau de string ["comedie", "drame", "aventure"].
  * @param idList [17, 12, 123]
+ * @param movieGenreList les genres[{id, name}] 
  * @returns Promise<string[]>
  */
 function getGenresById(idList: number[], movieGenreList: any[]): string[] {
