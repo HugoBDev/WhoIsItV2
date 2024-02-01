@@ -10,31 +10,29 @@ const movieApi = new MovieAPI();
 function Home() {
   //? ici le state doit etre une liste de MovieCardModel sous forme de tableau(sinon on peut pas map dedans), de base ce tableau est vide//
   const [movieList, setMovieList] = useState<MovieCardModel[]>([]);
+
+ 
   
-
-
-
-
-
-
- 
-
- 
-
-
+  
+  
   useEffect(() => {
-    movieApi.getTopRatedMovie().then((data) => {
-      const topRatedMovies: MovieCardModel[] = data.results.map((el: any) => ({
-        id: el.id,
-        title: el.title,
-        genre: getGenresById(el.genre_ids),
-        poster_path: `https://image.tmdb.org/t/p/original/${el.poster_path}`,
-      }));
-      setMovieList(topRatedMovies);
-      
-      
-    });
+    movieApi
+      .getGenres()
+      .then((res : any[]) => {
+        movieApi.getTopRatedMovie().then((data) => {
+          const topRatedMovies: MovieCardModel[] = data.results.map((el: any) => ({
+            id: el.id,
+            title: el.title,
+            genres: getGenresById(el.genre_ids, res),        
+            poster_path: `https://image.tmdb.org/t/p/original/${el.poster_path}`,
+          }));
+          setMovieList(topRatedMovies);
+        });
+
+      })
+      .catch((error) => console.log(error))
   }, []);
+
 
   return (
     <div className="movies-cards-wrapper">

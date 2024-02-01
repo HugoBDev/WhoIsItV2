@@ -17,9 +17,7 @@ export class MovieAPI {
     return new Promise((resolve, reject) => {
       fetch(url)
         .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          
+        .then((data) => {      
           resolve(data)})
         .catch((error) => reject(error));
     });
@@ -68,7 +66,7 @@ export class MovieAPI {
     return new Promise((resolve, reject) => {
       fetch(url)
         .then((res) => res.json())
-        .then((data) => resolve(data))
+        .then((data) => resolve(data.genres))
         .catch((error) => reject(error));
     });
   }
