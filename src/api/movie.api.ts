@@ -17,8 +17,9 @@ export class MovieAPI {
     return new Promise((resolve, reject) => {
       fetch(url)
         .then((res) => res.json())
-        .then((data) => {      
-          resolve(data)})
+        .then((data) => {
+          resolve(data);
+        })
         .catch((error) => reject(error));
     });
   }
@@ -52,17 +53,22 @@ export class MovieAPI {
   }
 
   /**
-   * 
+   *
    * @param category = ici sous forme de string on choisit "movie" ou "tv" pour les TV SHOWS
-   * @param language 
-   * @returns 
+   * @param language
+   * @returns
    */
-  getGenres(category: "movie" | "tv" = "movie", language: string = "fr"): Promise<any> {
+  getGenres(
+    category: "movie" | "tv" = "movie",
+    language: string = "fr"
+  ): Promise<any> {
     const queryParams: any = {
       language: language,
-      api_key: environnement.API_KEY
+      api_key: environnement.API_KEY,
     };
-    const url = `${environnement.api.genresData}${category}/list?${new URLSearchParams(queryParams)}`;
+    const url = `${
+      environnement.api.genresData
+    }${category}/list?${new URLSearchParams(queryParams)}`;
     return new Promise((resolve, reject) => {
       fetch(url)
         .then((res) => res.json())
@@ -71,16 +77,40 @@ export class MovieAPI {
     });
   }
 
-  getSearchResults( input : string, page : number  = 1, language: string = "fr" ) : Promise<any> {
-    const queryParams :any ={
-      query : input,
-      page : page,
-      language :language,
-      include_adult : false,
-      api_key: environnement.API_KEY
-    }
-    const url = `${environnement.api.searchMovie}?${new URLSearchParams(queryParams)}`
-    console.log(url);
+  getSearchResults(
+    input: string,
+    page: number = 1,
+    language: string = "fr"
+  ): Promise<any> {
+    const queryParams: any = {
+      query: input,
+      page: page,
+      language: language,
+      include_adult: false,
+      api_key: environnement.API_KEY,
+    };
+    const url = `${environnement.api.searchMovie}?${new URLSearchParams(
+      queryParams
+      )}`;
+      console.log(url);
+      
+      return new Promise((resolve, reject) => {
+        fetch(url)
+        .then((res) => res.json())
+        .then((data) => resolve(data))
+        .catch((error) => reject(error));
+      });
+  }
+
+  getPersonDetails(personId: number, combined_credits : boolean = true, language: string = "fr"): Promise<any> {
+    
+    const queryParams: any = {
+      language: language,
+      api_key: environnement.API_KEY,
+      append_to_response: combined_credits ? "combined_credits" : ""
+    };
+
+    const url = `${environnement.api.personDetails}${personId}?${new URLSearchParams(queryParams)}`;
     
     return new Promise((resolve, reject) => {
       fetch(url)

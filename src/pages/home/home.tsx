@@ -12,9 +12,8 @@ function Home() {
   const [movieList, setMovieList] = useState<MovieCardModel[]>([]);
 
  
-  movieApi.getSearchResults("spider man")
+  movieApi.getPersonDetails(11)
   .then((data) => console.log(data)
-  
   )
   
   
@@ -25,7 +24,7 @@ function Home() {
       .then((res : any[]) => {
         //?.2 Ici la "res", c'est les genres, on est surs de les avoirs
         //?.3 Du coup, on a tout pour appeler nos films avec les attributs de MovieModel
-        movieApi.getTopRatedMovie().then((data) => {
+        movieApi.getTopRatedMovie(2).then((data) => {
           const topRatedMovies: MovieCardModel[] = data.results.map((el: any) => ({
             id: el.id,
             title: el.title,
