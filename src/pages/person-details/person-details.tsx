@@ -34,7 +34,7 @@ function PersonDetails() {
     </div>
     <div className="person-details-bottom-gradient">
       <div className="person-details-name"> {personDetail?.name}</div>
-      <div className="person-details-birthday">Né(é) le :${personDetail?.birthday}</div>
+      <div className="person-details-birthday">Né(é) le : {personDetail?.birthday}</div>
       <div >{personDetail?.known_for_department} </div>
     </div>
   </div>

@@ -39,24 +39,30 @@ function MovieDetails() {
         })       
     }, []);
     return(
-        <>
-            <div className="img-container">
-                <img src={movieDetail?.poster_path} alt="" />
-            </div>
-            <div className="infos-wrapper">
-                <div className="title">{movieDetail?.title}</div>
-                <div className="realease-date">{movieDetail?.release_date}</div>
-                <div className="overview">{movieDetail?.overview}</div>
-                
-            </div>
-            <div className="crew-wrapper">
-            {personsDetail.map((person, index) => (
-                <PersonCard  key={index} person={person} />
-            ))}
+        <div className="details-page-container">
+        <Link className="back-btn" to="/home">
+          RETOUR
+        </Link>
+  
+        <div className="header">
+          <div className="img-container">
+            <img src={movieDetail?.poster_path} alt="" />
+          </div>
+  
+          <div className="infos-wrapper">
+            <div className="title">{movieDetail?.title}</div>
+            <div className="director">{movieDetail?.director}</div>
+            <div className="realease-date">{movieDetail?.release_date}</div>
+            <div className="overview">{movieDetail?.overview}</div>
+          </div>
         </div>
-
-            <Link className="back-btn" to="/home">RETOUR</Link>
-        </>
+  
+        <div className="crew-wrapper">
+          {personsDetail.map((person, index) => (
+            <PersonCard key={index} person={person} />
+          ))}
+        </div>
+      </div>
     )
     }
     export default MovieDetails
