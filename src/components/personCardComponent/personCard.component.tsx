@@ -1,13 +1,14 @@
 import { PersonModel } from "../../models/person.model";
 import "./personCard.scss";
 import Chip from "../chipComponent/Chip";
+import { Link } from "react-router-dom";
 
 const PersonCard = ({ person }: { person: PersonModel }) => {
-    console.log(person);
+   
     
   return (
    
-      <div className="person-card">
+      <Link to ={`/persondetails/${person.personId}`} className="person-card">
         <div id="img-container">
           <img src={person.profile_path} alt="actor-poster" />
         </div>
@@ -16,7 +17,7 @@ const PersonCard = ({ person }: { person: PersonModel }) => {
           <div className="personcard-name"> {person.name}</div>
           <Chip name={person.department} />
         </div>
-      </div>
+      </Link>
     
   );
 };

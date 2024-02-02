@@ -22,7 +22,7 @@ function MovieDetails() {
             title : data.title,
             release_date: data.release_date,
             poster_path : `https://image.tmdb.org/t/p/original/${data.poster_path}`,
-            director : data.credits.crew.find((e : any) => e.known_for_department === "Directing" && e.department === "Directing").name,
+            director : data.credits.crew.find((e : any) => e.known_for_department === "Directing" && e.department === "Directing") ? data.credits.crew.find((e : any) => e.known_for_department === "Directing" && e.department === "Directing").name : "t'es relou mec",
             overview : data.overview,  
             cast : data.credits.cast  
             }
@@ -51,7 +51,7 @@ function MovieDetails() {
             </div>
             <div className="crew-wrapper">
             {personsDetail.map((person, index) => (
-                <PersonCard key={index} person={person} />
+                <PersonCard  key={index} person={person} />
             ))}
         </div>
 
