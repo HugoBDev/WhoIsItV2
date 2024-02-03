@@ -28,16 +28,19 @@ console.log(query);
       .then((res : any[]) => {
         //?.2 Ici la "res", c'est les genres, on est surs de les avoirs
         //?.3 Du coup, on a tout pour appeler nos films avec les attributs de MovieModel
-        movieApi.getSearchResults(query).then((data) => {
-          const topRatedMovies: MovieCardModel[] = data.results.map((el: any) => ({
-            id: el.id,
-            title: el.title,
-            //?4. On utilise la fonction qui prend en paramètres, les ids(des films), et les genres[{id, name}]
-            genres: getGenresById(el.genre_ids, res),        
-            poster_path: `https://image.tmdb.org/t/p/original/${el.poster_path}`,
-          }));
-          setMovieList(topRatedMovies);
-        });
+        setTimeout(()=>{
+
+          movieApi.getSearchResults(query).then((data) => {
+            const topRatedMovies: MovieCardModel[] = data.results.map((el: any) => ({
+              id: el.id,
+              title: el.title,
+              //?4. On utilise la fonction qui prend en paramètres, les ids(des films), et les genres[{id, name}]
+              genres: getGenresById(el.genre_ids, res),        
+              poster_path: `https://image.tmdb.org/t/p/original/${el.poster_path}`,
+            }));
+            setMovieList(topRatedMovies);
+          });
+        },300)
 
       })
       .catch((error) => console.log(error))

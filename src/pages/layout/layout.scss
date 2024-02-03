@@ -24,6 +24,13 @@
     font-family: Arial, Helvetica, sans-serif;
     width: 24rem;
     font-size: 1.5rem;
-
+    transition: margin-top 300ms ease-in-out;
+    
+  }
+  .search-on-top{
+    margin-top: 0;
+  }
+  .search-deployed{
+    margin-top: 20rem;
   }
 }
