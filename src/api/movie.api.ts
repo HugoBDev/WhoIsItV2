@@ -77,6 +77,26 @@ export class MovieAPI {
     });
   }
 
+  
+  getPersonDetails(personId: number, combined_credits : boolean = true, language: string = "fr"): Promise<any> {
+    
+    const queryParams: any = {
+      language: language,
+      api_key: environnement.API_KEY,
+      append_to_response: combined_credits ? "combined_credits" : ""
+    };
+
+    const url = `${environnement.api.personDetails}${personId}?${new URLSearchParams(queryParams)}`;
+    
+    return new Promise((resolve, reject) => {
+      fetch(url)
+        .then((res) => res.json())
+        .then((data) => resolve(data))
+        .catch((error) => reject(error));
+    });
+  }
+
+
   getSearchResults(
     input: string,
     page: number = 1,
@@ -102,21 +122,5 @@ export class MovieAPI {
       });
   }
 
-  getPersonDetails(personId: number, combined_credits : boolean = true, language: string = "fr"): Promise<any> {
-    
-    const queryParams: any = {
-      language: language,
-      api_key: environnement.API_KEY,
-      append_to_response: combined_credits ? "combined_credits" : ""
-    };
-
-    const url = `${environnement.api.personDetails}${personId}?${new URLSearchParams(queryParams)}`;
-    
-    return new Promise((resolve, reject) => {
-      fetch(url)
-        .then((res) => res.json())
-        .then((data) => resolve(data))
-        .catch((error) => reject(error));
-    });
-  }
+  
 }

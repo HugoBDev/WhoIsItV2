@@ -7,15 +7,19 @@ import getGenresById from "../../services/genre.service";
 
 const movieApi = new MovieAPI();
 
-function Home() {
+
+interface HomeProps {
+  query: string;
+}
+
+
+const Home: React.FC<HomeProps> = ({query}) => {
   //? ici le state doit etre une liste de MovieCardModel sous forme de tableau(sinon on peut pas map dedans), de base ce tableau est vide//
   const [movieList, setMovieList] = useState<MovieCardModel[]>([]);
+console.log(query);
 
  
-  movieApi.getPersonDetails(11)
-  .then((data) => console.log(data)
-  )
-  
+
   
   useEffect(() => {
     //? .1 Ici on appelle tous les genres 
@@ -24,7 +28,7 @@ function Home() {
       .then((res : any[]) => {
         //?.2 Ici la "res", c'est les genres, on est surs de les avoirs
         //?.3 Du coup, on a tout pour appeler nos films avec les attributs de MovieModel
-        movieApi.getTopRatedMovie(2).then((data) => {
+        movieApi.getSearchResults(query).then((data) => {
           const topRatedMovies: MovieCardModel[] = data.results.map((el: any) => ({
             id: el.id,
             title: el.title,
@@ -37,7 +41,7 @@ function Home() {
 
       })
       .catch((error) => console.log(error))
-  }, []);
+  }, [query]);
   return (
     <div className="movies-cards-wrapper">
       {movieList.map((moviemap, index) => (
