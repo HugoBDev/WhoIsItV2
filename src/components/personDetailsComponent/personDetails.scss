@@ -5,11 +5,11 @@ $dropShadowColor : $primary-light;
 
 
 
-// .crew-wrapper{
-// display: flex;
-// gap: 2rem;
-// flex-wrap: wrap;
-// }
+.crew-wrapper{
+display: flex;
+gap: 2rem;
+flex-wrap: wrap;
+}
 .person-details-card {
     cursor: pointer;
     display: flex;
